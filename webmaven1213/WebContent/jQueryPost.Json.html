@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Json Post</title>
+<script type="text/javascript" 
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+</head>
+<body>
+Name:<input type="text" id="name" value="Amy"/><br><br/>
+Age:<input type="text" id="age" value="20"/><br><br/>
+<button id="send">Send to Server</buton>
+<script >
+<!--jQuery資料結構-->
+function result(data){
+	alert(data);
+}
+function execute(){
+	var n=$("#name").val();
+	var a=$("#age").val();
+	var obj=new Object();
+	obj.name=n;
+	obj.age=a;
+	$.post("JsonPostServlet",{"stu":JSON.stringify(obj)},result);
+}
+
+ function start(){
+	 $("#send").click(execute);
+ }
+
+$(document).ready(start);
+</script>
+</body>
+</html>
